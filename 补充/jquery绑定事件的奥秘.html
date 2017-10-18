@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .panel{
+            border:1px solid red;
+        }
+    </style>
+</head>
+<body>
+
+<div class="panel">
+    <input type="button" value="老的">
+</div>
+
+</body>
+<script src="../js/lib/jquery-2.1.4.js"></script>
+<script>
+//    //第一种(正确的写法)：
+//    //新创建一个panel，并且给panel中的按钮绑定单击事件
+//    var panel="<div class='panel'>" +
+//            "<input type='button' value='新的'>" +
+//            "</div>";
+//    $(panel).on("click","input",function(){
+//        alert("新的");
+//    }).appendTo("body");
+
+    //第二种(错误的写法);
+//    var panel="<div class='panel'>" +
+//            "<input type='button' value='新的'>" +
+//            "</div>";
+//    $("body").append(panel);
+//    //给页面中所有的panel元素绑定事件
+//    $(".panel").on("click","input",function(){
+//        alert("新的");
+//    })
+
+    //第三种(正确的写法):
+    var panel="<div class='panel'>" +
+            "<input type='button' value='新的'>" +
+            "</div>";
+    var $panel=$(panel);
+    //给这个特定的jquery对象(元素)绑定事件的
+    $panel.on("click","input",function(){
+        alert("新的");
+    });
+
+    $("body").append($panel);
+    //把jquery对象里面的DOM元素放到了页面中，点击页面中的元素会有正确的结果
+</script>
+</html>

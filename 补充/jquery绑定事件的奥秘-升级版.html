@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="panel">
+    <input type="button" value="老的">
+</div>
+
+</body>
+<script src="../js/lib/jquery-2.1.4.js"></script>
+<script>
+    var panel = "<div class='panel'>" +
+                    "<input type='button' value='新的'>" +
+                "</div>";
+
+    var $panel=$(panel);        //方法内部已经提前创建了一个DOM元素
+    $panel.on("click","input",function(){
+        alert("新的");
+    });
+
+    $("body").append(panel);
+    //append方法的参数是一个html：
+    //      方法内部：重新基于该字符串创建出了全新的DOM元素
+    //      -->把全新的DOM元素添加到了页面中
+    //      -->点击了页面中的元素，也就是点击了这个全新的DOM元素，而这个全新的DOM元素没有事件绑定，所以点击没有效果
+
+
+</script>
+</html>

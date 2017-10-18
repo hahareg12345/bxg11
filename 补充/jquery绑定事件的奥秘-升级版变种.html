@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div class="panel">
+    <input type="button" value="老的">
+</div>
+
+</body>
+<script src="../js/lib/jquery-2.1.4.js"></script>
+<script>
+    var panel = "<div class='panel'>" +
+                    "<input type='button' value='新的'>" +
+                "</div>";
+
+
+
+    var $panel=$(panel);        //方法内部已经提前创建了一个DOM元素
+    $panel.on("click","input",function(){
+        alert("新的");
+    });
+
+
+    //又重新创建了一个DOM元素，最终把该DOM元素放到页面中
+    $($panel).appendTo("body");         //正确的写法
+
+    //$(panel).appendTo("body");          //错误的写法
+
+
+
+
+
+
+</script>
+</html>

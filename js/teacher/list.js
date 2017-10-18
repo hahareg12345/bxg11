@@ -54,8 +54,15 @@ define([
                     r:result
                 });
 
+                //将事件绑定在这个新创建的特定的panel中
+                var $panel=$(html);         //$("<input/>").appendTo("body")
+                $panel.on("click",".btn-show",function(){
+                    alert("查看按钮");
+                });
+
                 //把真实的内容放到页面中
-                $(".main").html(html);
+                $(".main").html($panel);
+
             }
         })
     }
