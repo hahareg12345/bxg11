@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+<div class="container">
+    <h3 class="text-center">博学谷管理系统</h3>
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">用户名</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="tc_name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">密码</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" name="tc_pass">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-danger btn-block">登录</button>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+<script src="js/lib/jquery-2.1.4.js"></script>
+<script>
+    //每一次进行表单提交的时候，都会触发表单的submit事件
+    $("form").on("submit",function(e){
+        var formData=$(this).serialize();
+
+
+        e.preventDefault();             //阻止该事件的默认行为
+
+        //通过ajax方式把表单数据提交到服务器中
+        $.ajax({
+            url:"/api/login",
+            type:"post",
+            data:formData,
+
+            success:function(res){
+                if(res.code==200){
+                    //跳转到首页
+                    location.href="index.html";
+                }
+
+                //console.log(res);
+            },
+            //指定ajax请求失败的时候调用
+            error:function(res){
+                console.log(res);
+            }
+        })
+    })
+</script>
+</html>

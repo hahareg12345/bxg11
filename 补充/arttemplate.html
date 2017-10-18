@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script src="../js/lib/jquery-2.1.4.js"></script>
+<script src="../js/lib/template-web.js"></script>
+<script id="tpl" type="text/html">{{num}}</script>
+<script>
+    //只给id
+    //arttemplate内部自己去获取模板内容
+    var html = template("tpl", {num: 100});
+    console.log(html);
+
+
+    //直接解析模板内容
+    var html2 = template.render("{{num}}", {num: 100});
+    console.log(html2);
+</script>
+</html>

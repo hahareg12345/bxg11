@@ -1,0 +1,31 @@
+div.aside{
+    position: fixed;
+    left:0;
+    top:0;
+    width:180px;
+    bottom:0;
+    background-color: lightgreen;
+}
+
+div.aside>.profile{
+    width:100%;
+    height:150px;
+    background-color: #daa520;
+
+    overflow: hidden;
+}
+
+div.aside>.profile>.img-container{
+    margin:20px auto;
+    width: 80px;
+}
+
+div.content{
+    position: absolute;
+    left:180px;
+    top:0;
+    right:0;
+
+    background-color: pink;
+    min-height: 800px;      /*如果容器里面没有任何内容，那么也会呈现800px的高度*/
+}
