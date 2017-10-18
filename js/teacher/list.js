@@ -10,8 +10,13 @@ define([
     "text!tpls/teacherListTpl.html",
 
     //arttemplate模板引擎
-    "art"
-],function($,teacherListTpl,art){
+    "art",
+
+    //"show"      //js/show     错误的写法
+
+    //查看讲师模块
+    "teacher/show"      //相当于："./show"
+],function($,teacherListTpl,art,teacherShow){
 
     return function(){
 
@@ -57,7 +62,12 @@ define([
                 //将事件绑定在这个新创建的特定的panel中
                 var $panel=$(html);         //$("<input/>").appendTo("body")
                 $panel.on("click",".btn-show",function(){
-                    alert("查看按钮");
+                    //通过适当的方式获取该行对应的讲师id
+                    var tc_id=$(this).parent().attr("tc_id");
+
+                    teacherShow(tc_id);
+
+
                 });
 
                 //把真实的内容放到页面中

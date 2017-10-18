@@ -29,7 +29,11 @@ require.config({
 });
 
 //入口模块
-require(["jquery","teacher/list"], function ($,teacherList) {
+require([
+    "jquery",
+    "teacher/list",
+    "bootstrap"
+], function ($,teacherList) {
 
     //实现菜单切换
     $(".list-group").on("click", "a", function () {
