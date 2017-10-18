@@ -15,8 +15,11 @@ define([
     //"show"      //js/show     错误的写法
 
     //查看讲师模块
-    "teacher/show"      //相当于："./show"
-],function($,teacherListTpl,art,teacherShow){
+    "teacher/show",      //相当于："./show"
+
+    //添加讲师
+    "teacher/add",
+],function($,teacherListTpl,art,teacherShow,teacherAdd){
 
     return function(){
 
@@ -67,6 +70,10 @@ define([
 
                     teacherShow(tc_id);
 
+
+                }).on("click",".btn-add",function(){
+                    //添加讲师：
+                    teacherAdd();
 
                 });
 
