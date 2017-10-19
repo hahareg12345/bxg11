@@ -80,7 +80,9 @@ define([
 
                 }).on("click",".btn-edit",function(){
                     //编辑讲师：
-                    teacherEdit();
+
+                    var tc_id=$(this).parent().attr("tc_id");
+                    teacherEdit(tc_id);
 
                 });
 
