@@ -19,7 +19,10 @@ define([
 
     //添加讲师
     "teacher/add",
-],function($,teacherListTpl,art,teacherShow,teacherAdd){
+
+    //编辑讲师
+    "teacher/edit"
+],function($,teacherListTpl,art,teacherShow,teacherAdd,teacherEdit){
 
     return function(){
 
@@ -74,6 +77,10 @@ define([
                 }).on("click",".btn-add",function(){
                     //添加讲师：
                     teacherAdd();
+
+                }).on("click",".btn-edit",function(){
+                    //编辑讲师：
+                    teacherEdit();
 
                 });
 
