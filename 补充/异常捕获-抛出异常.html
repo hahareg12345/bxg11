@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //不推荐的做法：
+//    try{
+//
+//        if(a){
+//        }
+//
+//    }catch(e){
+//        console.log("a变量不存在");
+//
+//    }
+
+    //推荐的做法：
+//    if(typeof a ==="undefined"){
+//        console.log("变量不存在");
+//    }
+
+
+    //抛出异常：throw "不太好";   throw new Error("不太舒服");
+
+    //判断参数是否为空的情况，也会适应抛出异常，来友情的提示用户
+//    function f1(a){
+//        if(typeof a !=="function") throw new Error("a应该是一个函数");
+//
+//        a();
+//        console.log("后面的代码");
+//    }
+//
+//    f1();
+
+
+    function f2(a,b){
+        if(typeof a != "number" || typeof b !="number"){
+            throw new Error("请提供2个数字类型的参数");
+        }
+
+        console.log(a+b);
+    }
+
+
+
+</script>
+</html>

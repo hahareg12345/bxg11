@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    function f1(callback){
+        console.log("一开始的代码");
+
+        callback(100);
+        //因为callback保存了匿名函数的内存地址，所以调用callback函数就相当于调用匿名函数
+
+        //在调用callback的时候传递实参，那个这个实参也就被匿名函数的形参接收了
+
+        //结果：status-->100
+    }
+
+    f1(function(status){
+
+        console.log(status);//100
+    });
+
+
+</script>
+</html>
