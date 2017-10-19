@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script src="../js/lib/template-web.js"></script>
+<script src="../js/lib/jquery-2.1.4.js"></script>
+<script>
+    var tpl="<div>" +
+            "{{each result}}" +
+                "<span>{{$value}}</span>" +
+            "{{/each}}" +
+            "</div>";
+
+    //render方法
+    //第一个参数：模板内容
+    //第二个参数：对象
+    //      {{each v}}      -->对象中拥有v属性，并且v属性是一个数组
+    //      {{val}}         -->对象中拥有val属性
+
+    var res={
+        result:[1,3,5]
+    };
+
+    //第一种方式：(更方便)
+//    var content=template.render(tpl,res);
+//    console.log(content);
+
+    //第二种方式：
+//    var content=template.render(tpl,{
+//        result:res.result
+//    });
+//    console.log(content);
+
+</script>
+</html>
