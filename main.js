@@ -18,12 +18,20 @@ require.config({
         text:"lib/text",
 
         //配置一些文件夹路径
-        tpls: "../tpls"
+        tpls: "../tpls",
+
+        //配置日期控件的2个文件路径
+        datetime:"../assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker",
+        datetimeLang:"../assets/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN"
     },
     shim: {
         //bootstrap将会在jquery整个文件读取完毕之后再去执行
         bootstrap: {
             deps: ["jquery"]
+        },
+        //要读取语言包，必须首先读取主文件
+        datetimeLang:{
+            deps:["datetime"]
         }
     }
 });
@@ -32,7 +40,10 @@ require.config({
 require([
     "jquery",
     "teacher/list",
-    "bootstrap"
+    "bootstrap",
+    //导入日期控件的主文件
+    "datetime",
+    "datetimeLang"
 ], function ($,teacherList) {
 
     //实现菜单切换

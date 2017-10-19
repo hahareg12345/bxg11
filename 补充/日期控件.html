@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--bootstrap样式-->
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.css">
+    <!--日期控件样式-->
+    <link rel="stylesheet" href="../assets/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css">
+</head>
+<body>
+
+<input type="text" value="2012-05-15 21:05" id="datetimepicker">
+
+</body>
+<script src="../js/lib/jquery-2.1.4.js"></script>
+<script src="../assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+<script>
+    $('#datetimepicker').datetimepicker({
+        format: 'yyyy-mm-dd hh:ii'
+    });
+</script>
+</html>
