@@ -22,7 +22,10 @@ require.config({
 
         //配置日期控件的2个文件路径
         datetime:"../assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker",
-        datetimeLang:"../assets/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN"
+        datetimeLang:"../assets/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN",
+
+        //配置jquery.cookie插件路径
+        cookie:"lib/jquery.cookie"
     },
     shim: {
         //bootstrap将会在jquery整个文件读取完毕之后再去执行
@@ -43,11 +46,12 @@ require([
     "bootstrap",
     //导入日期控件的主文件
     "datetime",
-    "datetimeLang"
+    "datetimeLang",
+    "cookie"
 ], function ($,teacherList) {
 
     //获取用户登录的信息
-    var userInfoStr=sessionStorage.getItem("userInfo");     //'{ "tc_avatar":"...","tc_name":"..." }'
+    var userInfoStr=$.cookie("userInfo"); //sessionStorage.getItem("userInfo");     //'{ "tc_avatar":"...","tc_name":"..." }'
 
     //如果没有数据，就认为没有登录过，而该项目必须要登录才能访问，所以就跳转到登录页面
     if(!userInfoStr)    return location.href="login.html";
