@@ -45,12 +45,13 @@ require([
     "teacher/list",
     "common/logout",
     "common/checkLogin",
+    "category/list",        //分类列表
     "bootstrap",
     //导入日期控件的主文件
     "datetime",
     "datetimeLang",
     "cookie"
-], function ($,teacherList,commonLogout,commonCheckLogin) {
+], function ($,teacherList,commonLogout,commonCheckLogin,categoryList) {
 
     //进入到验证用户是否登录模块  并且绑定 用户头像+用户名
     commonCheckLogin();
@@ -85,7 +86,11 @@ require([
                 $(".main").html("添加课程");
                 break;
             case "category":
-                $(".main").html("课程分类");
+                // $(".main").html("课程分类");
+
+                categoryList();
+
+
                 break;
             case "chart":
                 $(".main").html("图表统计");
