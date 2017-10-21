@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<a href="get传汉字2.html?name=张三">跳转一下</a>
+
+</body>
+<script>
+    //如果说url地址中包含了中文，那么会将该中文进行"编码"，为：%E5%BC%A0%E4%B8%89
+    //如果想要在另一个页面中正确的获取该值，那么就应该对该内容进行“解码”操作：decodeURI
+    var s1="%E5%BC%A0%E4%B8%89";
+    var s2=decodeURI(s1);       //s2="张三"
+
+    //另：如果想要自己对一段中文进行编码，那么也可以利用浏览器内置的：编码函数：encodeURI
+</script>
+</html>

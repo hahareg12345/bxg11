@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<input type="button" id="btn1" value="告诉你我要说话">
+
+<input type="button" id="btn2" value="把你告诉我的话说出来">
+
+</body>
+<script src="../js/lib/jquery-2.1.4.js"></script>
+<script>
+    //观察者模式：有2个关键人物，一个是 说话者(订阅：subscribe) 一个是传话者(发布：publish)
+
+//    $("#btn1").on("click",function(){
+//
+//        $("#btn1").on("say",function(){
+//            console.log("我爱你，彤彤");
+//        });
+//
+//    });
+//
+//    $("#btn2").on("click",function(){
+//        //说出：btn1想要说的话  -->也就是触发say事件
+//        $("#btn1").trigger("say");
+//
+//    });
+
+    var p1={
+        sayToP2:function(){
+            $("#btn1").on("say",function(){
+                console.log("我爱你，彤彤");
+            });
+        }
+    };
+
+    var p2={
+        sayToTong:function(){
+            $("#btn1").trigger("say");
+        }
+    };
+
+    //p1要说话：
+    p1.sayToP2();
+
+    //p2要传话：
+    p2.sayToTong();
+
+
+
+</script>
+</html>
