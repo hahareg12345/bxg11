@@ -5,8 +5,8 @@
  */
 define([
     "jquery",
-    "text!tpls/categoryListTpl.html",
-    "art"
+    "text!tpls/categoryListTpl.html",       //模板文件
+    "art"           //模板引擎
 ],function($,categoryListTpl,art){
 
 
