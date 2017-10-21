@@ -106,6 +106,30 @@ require([
 
     //让浏览器默认点击讲师管理按钮        -->模拟点击讲师管理按钮
     $(".list-group a[v=teacher]").trigger("click");
+    
+    
+    //实现退出登录的功能
+    $(".link-logout").on("click",function(e){
+        //a、阻止页面跳转
+        e.preventDefault();
+
+        //b、向服务器发送请求，告知服务器我要退出登录
+        $.ajax({
+            url:"/api/logout",
+            type:"post",
+            success:function(res){
+                if(res.code!=200) throw new Error(res.msg);
+
+                //c、移除cookie
+                $.removeCookie("userInfo");
+
+                //d、跳转到登录页
+                location.href="login.html";
+
+            }
+        })
+        
+    })
 
 
 })
