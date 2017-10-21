@@ -43,26 +43,18 @@ require.config({
 require([
     "jquery",
     "teacher/list",
+    "common/logout",
+    "common/checkLogin",
     "bootstrap",
     //导入日期控件的主文件
     "datetime",
     "datetimeLang",
     "cookie"
-], function ($,teacherList) {
+], function ($,teacherList,commonLogout,commonCheckLogin) {
 
-    //获取用户登录的信息
-    var userInfoStr=$.cookie("userInfo"); //sessionStorage.getItem("userInfo");     //'{ "tc_avatar":"...","tc_name":"..." }'
-
-    //如果没有数据，就认为没有登录过，而该项目必须要登录才能访问，所以就跳转到登录页面
-    if(!userInfoStr)    return location.href="login.html";
-
+    //进入到验证用户是否登录模块  并且绑定 用户头像+用户名
+    commonCheckLogin();
     
-    
-    var userInfo=JSON.parse(userInfoStr);
-
-    //将数据放到页面中
-    $(".profile img").attr("src",userInfo.tc_avatar);
-    $(".profile .text-username").text(userInfo.tc_name);
 
 
     //实现菜单切换
@@ -108,28 +100,9 @@ require([
     $(".list-group a[v=teacher]").trigger("click");
     
     
-    //实现退出登录的功能
-    $(".link-logout").on("click",function(e){
-        //a、阻止页面跳转
-        e.preventDefault();
 
-        //b、向服务器发送请求，告知服务器我要退出登录
-        $.ajax({
-            url:"/api/logout",
-            type:"post",
-            success:function(res){
-                if(res.code!=200) throw new Error(res.msg);
 
-                //c、移除cookie
-                $.removeCookie("userInfo");
-
-                //d、跳转到登录页
-                location.href="login.html";
-
-            }
-        })
-        
-    })
-
+    //退出登录模块
+    commonLogout();
 
 })
