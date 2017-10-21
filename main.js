@@ -50,7 +50,8 @@ require([
     //导入日期控件的主文件
     "datetime",
     "datetimeLang",
-    "cookie"
+    "cookie",
+    "common/myModal"        //自定义的模态框组件
 ], function ($,teacherList,commonLogout,commonCheckLogin,categoryList) {
 
     //进入到验证用户是否登录模块  并且绑定 用户头像+用户名
