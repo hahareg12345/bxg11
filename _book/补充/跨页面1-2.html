@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //1、location.search获取get请求的参数   获取到的数据，是以?开头的
+    var search=location.search;
+    console.log(search);
+
+    //2、如果还想要获取确定的数据，可以解析字符串
+    /**
+     * 将search传到函数中，返回给用户一个对象的数据
+     * @param search
+     */
+    function parse(search){
+        //从第二个字符开始截取   ，获取到第二个开始后面所有的字符
+        var str=search.substring(1);
+
+        var result={};
+
+        //分割字符串  -->产生字符串数组
+        var strs=str.split("&");
+
+        //遍历数组中的每一个元素
+        strs.forEach(function(v){
+            //伪代码：v="age=18"
+
+            var keyvalue=v.split("=");
+
+            var name=keyvalue[0];
+            var value=keyvalue[1];
+
+            result[name]=value;
+
+        })
+
+        return result;
+    }
+
+    var r=parse(search);
+    console.log(r);
+
+</script>
+</html>

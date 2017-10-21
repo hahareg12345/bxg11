@@ -18,12 +18,20 @@ require.config({
         text:"lib/text",
 
         //配置一些文件夹路径
-        tpls: "../tpls"
+        tpls: "../tpls",
+
+        //配置日期控件的2个文件路径
+        datetime:"../assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker",
+        datetimeLang:"../assets/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN"
     },
     shim: {
         //bootstrap将会在jquery整个文件读取完毕之后再去执行
         bootstrap: {
             deps: ["jquery"]
+        },
+        //要读取语言包，必须首先读取主文件
+        datetimeLang:{
+            deps:["datetime"]
         }
     }
 });
@@ -32,8 +40,26 @@ require.config({
 require([
     "jquery",
     "teacher/list",
-    "bootstrap"
+    "bootstrap",
+    //导入日期控件的主文件
+    "datetime",
+    "datetimeLang"
 ], function ($,teacherList) {
+
+    //获取用户登录的信息
+    var userInfoStr=sessionStorage.getItem("userInfo");     //'{ "tc_avatar":"...","tc_name":"..." }'
+
+    //如果没有数据，就认为没有登录过，而该项目必须要登录才能访问，所以就跳转到登录页面
+    if(!userInfoStr)    return location.href="login.html";
+
+    
+    
+    var userInfo=JSON.parse(userInfoStr);
+
+    //将数据放到页面中
+    $(".profile img").attr("src",userInfo.tc_avatar);
+    $(".profile .text-username").text(userInfo.tc_name);
+
 
     //实现菜单切换
     $(".list-group").on("click", "a", function () {
