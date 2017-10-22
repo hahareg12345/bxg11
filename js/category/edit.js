@@ -27,7 +27,32 @@ define([
 
 
                 //把编译成功的内容添加到页面中，并且以模态框形式呈现出来
-                $(categoryEdit).myModal();
+                var $categoryEdit=$(categoryEdit)
+                    .on("submit","form",function(e){
+                        e.preventDefault();
+
+                        //获取数据
+                        var formData=$(this).serialize();
+
+                        //ajax把数据提交到服务器中
+                        $.ajax({
+                            url:"/api/category/modify",
+                            type:"post",
+                            data:formData,
+                            success:function(res){
+                                if(res.code!=200) throw new Error(res.msg);
+
+                                //隐藏模态框
+                                $categoryEdit.modal("hide");
+
+                                //刷新分类列表页面
+                                $(".list-group a[v=category]").trigger("click");
+
+                            }
+                        })
+
+                    })
+                    .myModal();
             }
         })
 
