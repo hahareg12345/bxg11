@@ -5,12 +5,28 @@
  */
 define([
     "jquery",
-    "text!tpls/courseListTpl.html"
-],function($,courseListTpl){
+    "text!tpls/courseListTpl.html",
+    "art"
+],function($,courseListTpl,art){
 
     return function(){
 
+        $.ajax({
+            url:"/api/course",
+            type:"get",
+            success:function(res){
+                if(res.code!=200) throw new Error(res.msg);
 
-        $(".main").html(courseListTpl);
+                //把数据编译到模板中
+                var courseList=art.render(courseListTpl,res);
+
+                //把编译成功之后的数据放到页面中
+                $(".main").html(courseList);
+
+            }
+        })
+
+
+
     }
 })
