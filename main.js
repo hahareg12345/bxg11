@@ -47,13 +47,14 @@ require([
     "common/checkLogin",
     "category/list",        //分类列表
     "course/list",          //课程列表
+    "course/add",           //添加课程
     "bootstrap",
     //导入日期控件的主文件
     "datetime",
     "datetimeLang",
     "cookie",
     "common/myModal"        //自定义的模态框组件
-], function ($,teacherList,commonLogout,commonCheckLogin,categoryList,courseList) {
+], function ($,teacherList,commonLogout,commonCheckLogin,categoryList,courseList,courseAdd) {
 
     //进入到验证用户是否登录模块  并且绑定 用户头像+用户名
     commonCheckLogin();
@@ -86,7 +87,9 @@ require([
 
                 break;
             case "addcourse":
-                $(".main").html("添加课程");
+                courseAdd();
+                
+                
                 break;
             case "category":
                 // $(".main").html("课程分类");
