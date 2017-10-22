@@ -22,7 +22,10 @@ require.config({
 
         //配置日期控件的2个文件路径
         datetime:"../assets/bootstrap-datetimepicker/js/bootstrap-datetimepicker",
-        datetimeLang:"../assets/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN"
+        datetimeLang:"../assets/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN",
+
+        //配置jquery.cookie插件路径
+        cookie:"lib/jquery.cookie"
     },
     shim: {
         //bootstrap将会在jquery整个文件读取完毕之后再去执行
@@ -40,25 +43,20 @@ require.config({
 require([
     "jquery",
     "teacher/list",
+    "common/logout",
+    "common/checkLogin",
+    "category/list",        //分类列表
     "bootstrap",
     //导入日期控件的主文件
     "datetime",
-    "datetimeLang"
-], function ($,teacherList) {
+    "datetimeLang",
+    "cookie",
+    "common/myModal"        //自定义的模态框组件
+], function ($,teacherList,commonLogout,commonCheckLogin,categoryList) {
 
-    //获取用户登录的信息
-    var userInfoStr=sessionStorage.getItem("userInfo");     //'{ "tc_avatar":"...","tc_name":"..." }'
-
-    //如果没有数据，就认为没有登录过，而该项目必须要登录才能访问，所以就跳转到登录页面
-    if(!userInfoStr)    return location.href="login.html";
-
+    //进入到验证用户是否登录模块  并且绑定 用户头像+用户名
+    commonCheckLogin();
     
-    
-    var userInfo=JSON.parse(userInfoStr);
-
-    //将数据放到页面中
-    $(".profile img").attr("src",userInfo.tc_avatar);
-    $(".profile .text-username").text(userInfo.tc_name);
 
 
     //实现菜单切换
@@ -89,7 +87,11 @@ require([
                 $(".main").html("添加课程");
                 break;
             case "category":
-                $(".main").html("课程分类");
+                // $(".main").html("课程分类");
+
+                categoryList();
+
+
                 break;
             case "chart":
                 $(".main").html("图表统计");
@@ -102,6 +104,11 @@ require([
 
     //让浏览器默认点击讲师管理按钮        -->模拟点击讲师管理按钮
     $(".list-group a[v=teacher]").trigger("click");
+    
+    
 
+
+    //退出登录模块
+    commonLogout();
 
 })

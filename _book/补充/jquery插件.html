@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script src="../js/lib/jquery-2.1.4.js"></script>
+<script>
+    //工具类插件：
+    $.a1=function(){
+        alert("a1方法");
+    };
+
+    $.extend({
+        a2:function(){
+            alert("a2方法");
+        },
+        a3:function(){
+            alert("a3方法");
+        }
+    });
+
+    $.a1();
+    $.a2();
+    $.a3();
+
+
+//    //DOM操作类插件：
+//    $.fn.f1=function(){
+//        console.log("f1方法");
+//    };
+//
+//    $.fn.extend({
+//        f2:function(){
+//            console.log("f2方法");
+//        },
+//        f3:function(){
+//            console.log("f3方法");
+//        },
+//        f4:function(){
+//            console.log("f4方法");
+//        },
+//        f5:function(){
+//            console.log("f5方法");
+//        },
+//    });
+//
+//
+//    $("body").f1();
+//    $("body").f2();
+
+</script>
+</html>

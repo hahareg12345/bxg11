@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script src="../js/lib/jquery-2.1.4.js"></script>
+<script src="../js/lib/jquery.cookie.js"></script>
+<script>
+    //第一种类型：会话cookie
+
+//    //1、设置值
+//    $.cookie("phone","13188886666");
+//    $.cookie("email","123@qq.com");
+//
+//    //2、获取值
+//    var phone=$.cookie("phone");
+//    console.log(phone);
+//
+//    var email=$.cookie("email");
+//    console.log(email);
+
+
+    //第二种类型：设置长期cookie(具有指定有效期)
+//    $.cookie("address","广东深圳市",{
+//        expires:7               //expires不仅仅可以是日期类型的对象，也可以是以天为单位的数字
+//    });
+
+//    $.cookie("tel","0755-88888888",{
+//        expires:1/24              //该cookie值就会保存一小时
+//    });
+
+//    $.cookie("birthday","1.1",{
+//        expires:new Date("2018-01-01 08:00")        //对于这样的过期时间，已经在内部处理好了时区问题
+//    });
+
+    //删除指定的cookie
+    $.removeCookie("birthday");
+</script>
+</html>

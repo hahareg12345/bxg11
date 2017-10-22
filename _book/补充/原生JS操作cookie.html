@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //cookie是不能跨域的
+
+    //1、保存一条数据
+    document.cookie="name=abc";
+    document.cookie="age=18";
+
+    //2、获取所有数据
+    var cookie=document.cookie;
+    console.log(cookie);  //"name=abc; age=18; PHPSESSID=fr1njdv6apf3neoj5nehntrps7"
+    //之后可以解析字符串，获取指定的数据内容
+
+
+    //3、设置cookie的有效期
+    document.cookie="id=666;expires="+new Date("2017-10-22 08:00");
+
+</script>
+</html>

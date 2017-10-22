@@ -31,6 +31,7 @@
 </div>
 </body>
 <script src="js/lib/jquery-2.1.4.js"></script>
+<script src="js/lib/jquery.cookie.js"></script>
 <script>
     //每一次进行表单提交的时候，都会触发表单的submit事件
     $("form").on("submit",function(e){
@@ -50,7 +51,10 @@
                     //存储数据
                     var r=res.result;
                     var rStr=JSON.stringify(r);
-                    sessionStorage.setItem("userInfo",rStr);
+
+                    $.cookie("userInfo",rStr,{
+                        expires:1/24             //1小时后过期
+                    });      //sessionStorage.setItem("userInfo",rStr);
 
                     //跳转到首页
                     location.href="index.html";
