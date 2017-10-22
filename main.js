@@ -25,7 +25,9 @@ require.config({
         datetimeLang:"../assets/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN",
 
         //配置jquery.cookie插件路径
-        cookie:"lib/jquery.cookie"
+        cookie:"lib/jquery.cookie",
+
+        upload:"../assets/uploadify/jquery.uploadify"
     },
     shim: {
         //bootstrap将会在jquery整个文件读取完毕之后再去执行
@@ -35,7 +37,11 @@ require.config({
         //要读取语言包，必须首先读取主文件
         datetimeLang:{
             deps:["datetime"]
+        },
+        upload:{
+            deps:["jquery"]
         }
+
     }
 });
 
@@ -53,7 +59,9 @@ require([
     "datetime",
     "datetimeLang",
     "cookie",
-    "common/myModal"        //自定义的模态框组件
+    "common/myModal",        //自定义的模态框组件
+    "upload"
+
 ], function ($,teacherList,commonLogout,commonCheckLogin,categoryList,courseList,courseAdd) {
 
     //进入到验证用户是否登录模块  并且绑定 用户头像+用户名

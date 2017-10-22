@@ -7,7 +7,7 @@
         <ul class="list-group">
             {{each result}}
                 <li class="list-group-item">
-                    <div class="media">
+                    <div class="media" cs_id="{{$value.cs_id}}">
                         <div class="media-left">
                             <a href="#">
                                 {{if($value.cs_cover=='http://static.botue.com/images/cover/?')}}
@@ -21,7 +21,7 @@
                         </div>
                         <div class="media-body">
                             <h4 class="media-heading">{{$value.cs_name}}
-                                <button class="btn btn-success">课程信息</button>
+                                <button class="btn btn-success">课时信息</button>
                                 <button class="btn btn-primary">课程基本信息</button>
                             </h4>
                             <h4>————讲师：{{$value.tc_name}}</h4>

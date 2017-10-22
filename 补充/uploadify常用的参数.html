@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../assets/uploadify/uploadify.css">
+    <style>
+        .abc{
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<input type="file" id="file1">
+
+<input type="button" id="btnUpload" value="手动上传文件">
+
+</body>
+<script src="../js/lib/jquery-2.1.4.js"></script>
+<script src="../assets/uploadify/jquery.uploadify.js"></script>
+<script>
+    $("#file1").uploadify({
+//        //表示选择完文件之后，是否自动上传到服务器中
+//        auto:false,
+
+        fileSizeLimit:"100KB",  //单个文件的大小限制  可以使用诸如：B KB MB GB等单位
+
+        fileTypeExts : '*.gif; *.jpg; *.png',   //指定了上传的时候可以选择的文件类型
+
+
+
+        //指定要传递到服务器中的额外参数
+        formData:{
+            cs_id:8
+        },
+
+//        //指定上传过程中看到的进度模板
+//        itemTemplate:"<span></span>",
+
+//        //指定上传过程中能不能多选文件
+//        multi:false,
+
+//        //指定队列中最大的文件数量  默认值：999
+//        queueSizeLimit:3,
+
+        //服务器接收文件流的name名称
+        fileObjName:"cs_cover_original",
+
+        //指向本地的swf文件
+        swf      : '../assets/uploadify/uploadify.swf',
+
+        //处理请求的服务器地址
+        uploader : '/api/uploader/cover',
+
+        buttonClass:"abc",
+        buttonText:"选择"
+    });
+
+
+    //通过点击按钮上传文件
+    $("#btnUpload").on("click",function(){
+
+        //手动调用upload方法
+        $("#file1").uploadify("upload","*");    //手动上传队列中的所有文件
+    })
+</script>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../assets/uploadify/uploadify.css">
+</head>
+<body>
+
+<input type="file" id="file1">
+
+</body>
+<script src="../js/lib/jquery-2.1.4.js"></script>
+<script src="../assets/uploadify/jquery.uploadify.js"></script>
+<script>
+    $("#file1").uploadify({
+
+        'swf'      : '../assets/uploadify/uploadify.swf',        //指向本地的swf文件
+        'uploader' : '/api/teacher'         //表示文件上传到服务器的路径
+    });
+</script>
+</html>
