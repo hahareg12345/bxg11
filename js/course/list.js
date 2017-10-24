@@ -8,8 +8,9 @@ define([
     "text!tpls/courseListTpl.html",
     "art",
     "course/image",          //"./image" 依赖课程图片模块   错误的写法："image"
-    "course/basicInfo"      //"./basicInfo" 课程基本信息模块
-], function ($, courseListTpl, art, courseImage,courseBasicInfo) {
+    "course/basicInfo",      //"./basicInfo" 课程基本信息模块
+    "courseTime/list"        //课时信息列表 模块
+], function ($, courseListTpl, art, courseImage,courseBasicInfo,courseTimeList) {
 
     return function () {
 
@@ -37,6 +38,12 @@ define([
                         var id=$(this).parents(".media").attr("cs_id");
 
                         courseBasicInfo(id);
+                    })
+                    .on("click",".btn-coursetime",function(){
+                        var id=$(this).parents(".media").attr("cs_id");
+
+                        courseTimeList(id);
+
                     })
 
                 //把编译成功之后的数据放到页面中
