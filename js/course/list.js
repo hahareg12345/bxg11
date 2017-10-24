@@ -7,7 +7,7 @@ define([
     "jquery",
     "text!tpls/courseListTpl.html",
     "art",
-    "course/image"          //"./image" 依赖课程图片模块
+    "course/image"          //"./image" 依赖课程图片模块   错误的写法："image"
 ],function($,courseListTpl,art,courseImage){
 
     return function(){
