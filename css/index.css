@@ -27,5 +27,5 @@ div.content{
     right:0;
 
     /*background-color: pink;*/
-    min-height: 800px;      /*如果容器里面没有任何内容，那么也会呈现800px的高度*/
+    min-height: 500px;      /*如果容器里面没有任何内容，那么也会呈现800px的高度*/
 }
